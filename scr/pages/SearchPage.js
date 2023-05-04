@@ -1,32 +1,57 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, Button, Alert, View, TouchableHighlight, Text} from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Logo from "./components/Logo";
+import {
+    View,
+    KeyboardAvoidingView,
+    TextInput,
+    StyleSheet,
+    Text,
+    Platform,
+    TouchableWithoutFeedback,
+    Button,
+    Keyboard,
+} from 'react-native';
 
 
 const SearchPage = () => {
     return (
-
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={styles.container}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.inner}>
+                    <Text style={styles.header}>Search</Text>
+                    <TextInput placeholder="League" style={styles.textInput} />
+                    <View style={styles.btnContainer}>
+                        <Button title="Submit" onPress={() => null} />
+                    </View>
+                </View>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-    },
-    button: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 12,
-        backgroundColor: "black",
-        padding: 10,
-        borderRadius: 10,
-        alignSelf: 'center',
-        width: '100%',
-
-    },
     container: {
         flex: 1,
+    },
+    inner: {
+        marginTop: 28,
+        padding: 24,
+        flex: 1,
+    },
+    header: {
+        fontSize: 36,
+        marginBottom: 28,
+    },
+    textInput: {
+        height: 40,
+        borderColor: '#000000',
+        borderBottomWidth: 1,
+        marginBottom: 36,
+    },
+    btnContainer: {
+        backgroundColor: 'white',
+        marginTop: 12,
     },
 });
 

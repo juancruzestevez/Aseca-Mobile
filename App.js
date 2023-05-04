@@ -8,8 +8,8 @@ export default function App() {
   return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={StartPage}/>
-          <Stack.Screen name="Search" component={SearchPage}/>
+          <Stack.Screen name="Home" component={StartPage} options={{ headerShown: false, }}/>
+          <Stack.Screen name="Search" component={SearchPage} options={{ headerShown: false, }}/>
         </Stack.Navigator>
       </NavigationContainer>
   );
