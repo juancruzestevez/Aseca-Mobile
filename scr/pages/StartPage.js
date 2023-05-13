@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, Button, Alert, View, TouchableHighlight, Text, ViewComponent} from 'react-native';
+import {ImageBackground, StyleSheet, View, TouchableHighlight, Text} from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Logo from "./components/Logo";
 

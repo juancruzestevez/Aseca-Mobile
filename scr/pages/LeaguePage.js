@@ -1,0 +1,104 @@
+import React, {useEffect} from 'react';
+import axios from "axios";
+import {
+    View,
+    StyleSheet,
+    Text,
+    TouchableWithoutFeedback
+} from 'react-native';
+
+const LeaguePage = ({route, navigation}) => {
+    const [teams, setTeams] = React.useState([])
+
+
+
+    useEffect(() => {
+        loadLeague()
+    }, [])
+
+    const loadLeague = () => {
+        axios.get(
+            'http://localhost:8080/league', {
+                params: {
+                    id: route.params.id
+                }
+            }
+        ).then(async (res) => {
+            setTeams(res.data.team)
+            console.log(res.data)
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
+    return (
+        <View style={styles.container}>
+            <View style={styles.inner}>
+                <Text style={styles.header}>{teams[0].league.leagueName}</Text>
+                <Text style={styles.header2}>Teams</Text>
+                {teams.map((result) => (
+                    <View style={styles.btnContainer} key={result.id}>
+                        <TouchableWithoutFeedback onPress={() => navigation.navigate("Team", {
+                            id: result.id,
+                            matchesPlayed: result.matchesPlayed,
+                            wins: result.wins,
+                            losses: result.losses,
+                            pointInFavour: result.pointInFavour,
+                            winStreak: result.winStreak})
+                        }>
+                            <View>
+                                <Text style={styles.teamNamestyle}>{result.team.teamName}</Text>
+                                <Text style={styles.teamDatastyle}>matchesPlayed: {result.matchesPlayed} wins: {result.wins} losses: {result.pointInFavour}</Text>
+                                <Text style={styles.teamDatastyle}>pointInFavour: {result.pointInFavour} winStreak: {result.winStreak}</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
+                    </View>
+                ))}
+            </View>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    inner: {
+        marginTop: 28,
+        marginBottom: 28,
+        padding: 24,
+        flex: 1,
+    },
+    header: {
+        fontSize: 36,
+        marginBottom: 28,
+    },
+    header2: {
+        fontSize: 26,
+        marginBottom: 28,
+    },
+    textInput: {
+        height: 40,
+        borderColor: '#000000',
+        borderBottomWidth: 1,
+        marginBottom: 36,
+    },
+    btnContainer: {
+        marginTop: 12,
+        height: View,
+        backgroundColor:'#a4a4a4',
+        borderRadius: 10,
+        padding: 10,
+    },
+    teamNamestyle: {
+        fontSize: 32,
+        fontWeight: 'bold',
+    },
+    teamDatastyle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    }
+});
+export default LeaguePage;
+
+
