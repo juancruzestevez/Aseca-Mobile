@@ -10,21 +10,19 @@ import {
 const LeaguePage = ({route, navigation}) => {
     const [teams, setTeams] = React.useState([])
 
-
-
     useEffect(() => {
         loadLeague()
-    }, [])
+    }, []);
 
     const loadLeague = () => {
         axios.get(
-            'http://localhost:8080/league', {
+            'http://localhost:8080/leagueTable/get', {
                 params: {
-                    id: route.params.id
+                    leagueId: route.params.id
                 }
             }
         ).then(async (res) => {
-            setTeams(res.data.team)
+            setTeams(res.data)
             console.log(res.data)
         }).catch((error) => {
             console.log(error);
@@ -34,7 +32,7 @@ const LeaguePage = ({route, navigation}) => {
     return (
         <View style={styles.container}>
             <View style={styles.inner}>
-                <Text style={styles.header}>{teams[0].league.leagueName}</Text>
+                <Text style={styles.header}>{route.params.leagueName}</Text>
                 <Text style={styles.header2}>Teams</Text>
                 {teams.map((result) => (
                     <View style={styles.btnContainer} key={result.id}>
@@ -50,6 +48,7 @@ const LeaguePage = ({route, navigation}) => {
                                 <Text style={styles.teamNamestyle}>{result.team.teamName}</Text>
                                 <Text style={styles.teamDatastyle}>matchesPlayed: {result.matchesPlayed} wins: {result.wins} losses: {result.pointInFavour}</Text>
                                 <Text style={styles.teamDatastyle}>pointInFavour: {result.pointInFavour} winStreak: {result.winStreak}</Text>
+                                <Text style={styles.teamDatastyle}>win percentage: {result.winPercentage}%</Text>
                             </View>
                         </TouchableWithoutFeedback>
                     </View>

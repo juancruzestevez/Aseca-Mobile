@@ -19,10 +19,6 @@ const SearchPage = ({navigation}) => {
         loadLeagues()
     }, [])
 
-    useEffect(() => {
-        console.log(leagues);
-    }, [leagues]);
-
     const loadLeagues = () => {
         axios.get(
             'http://localhost:8080/league/all'
@@ -37,7 +33,7 @@ const SearchPage = ({navigation}) => {
     const getResults = (e) => {
         const value = e.target.value;
         const filtered = leagues.filter((lgs) =>
-            lgs.id.includes(value)
+            lgs.leagueName.includes(value)
         )
         setResults(filtered)
     }
@@ -52,7 +48,7 @@ const SearchPage = ({navigation}) => {
                     <TextInput onChange={getResults} placeholder="League" style={styles.textInput} />
                     {results.map((result) => (
                         <View style={styles.btnContainer} key={result.id}>
-                            <TouchableWithoutFeedback onPress={() => navigation.navigate("League", {id: result.id})}>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate("League", {id: result.id, leagueName: result.leagueName})}>
                                 <Text>{result.leagueName}</Text>
                             </TouchableWithoutFeedback>
                         </View>

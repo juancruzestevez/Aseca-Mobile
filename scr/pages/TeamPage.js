@@ -42,14 +42,14 @@ const TeamPage = ({route}) => {
         axios.get(
             'http://localhost:8080/playerStat/getStat', {
                 params: {
-                    id: id
+                    playerId: id
                 }
             }
         ).then(async (res) => {
             setPlayerName(res.data.player.name)
             setPointScored(res.data.pointsScored)
-            setPoints2(res.data.point2)
-            setPoints3(res.data.point3)
+            setPoints2(res.data.points2)
+            setPoints3(res.data.points3)
             setassists(res.data.assists)
             setModalVisible(true)
         }).catch((error) => {
