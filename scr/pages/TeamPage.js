@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         marginTop: 12,
-        height: View,
+        alignItems: 'flex-start',
         backgroundColor:'#a4a4a4',
         borderRadius: 10,
         padding: 10,
