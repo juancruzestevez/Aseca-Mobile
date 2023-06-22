@@ -12,6 +12,7 @@ const LeaguePage = ({route, navigation}) => {
 
     useEffect(() => {
         loadLeague()
+        order()
     }, []);
 
     const loadLeague = () => {
@@ -27,6 +28,20 @@ const LeaguePage = ({route, navigation}) => {
         }).catch((error) => {
             console.log(error);
         });
+    }
+
+    const order = () => {
+        const listaClonada = [...teams];
+        listaClonada.sort((a, b) => {
+            if (a.winPercentage < b.winPercentage) {
+                return -1;
+            }
+            if (a.winPercentage > b.winPercentage) {
+                return 1;
+            }
+            return 0;
+        });
+        setTeams(listaClonada);
     }
 
     return (
@@ -84,7 +99,7 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         marginTop: 12,
-        height: View,
+        alignItems: 'flex-start',
         backgroundColor:'#a4a4a4',
         borderRadius: 10,
         padding: 10,

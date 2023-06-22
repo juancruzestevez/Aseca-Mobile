@@ -13,6 +13,7 @@
     "@expo/webpack-config": "^0.17.0",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "appium-uiautomator2-driver": "^2.26.2",
     "axios": "^1.4.0",
     "expo": "^46.0.21",
     "expo-linking": "~3.2.4",
