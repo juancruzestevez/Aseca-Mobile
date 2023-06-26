@@ -18,13 +18,22 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "INTERNET"
+      ],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/basketball-icon.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.julianrecio.asecamobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9c33e447-aac5-4067-a92e-110abb4a85f4"
+      }
     }
   }
 }

@@ -7,6 +7,8 @@ import {
     TouchableWithoutFeedback
 } from 'react-native';
 
+// android application id = com.julianrecio.asecamobile
+
 const LeaguePage = ({route, navigation}) => {
     const [teams, setTeams] = React.useState([])
 
@@ -44,6 +46,9 @@ const LeaguePage = ({route, navigation}) => {
         setTeams(listaClonada);
     }
 
+    const generateUniqueId = (result) => {
+        return `team_${result.id}`;
+    };
     return (
         <View style={styles.container}>
             <View style={styles.inner}>
@@ -58,7 +63,8 @@ const LeaguePage = ({route, navigation}) => {
                             losses: result.losses,
                             pointInFavour: result.pointInFavour,
                             winStreak: result.winStreak})
-                        }>
+                        } testID={generateUniqueId(result)}
+                            >
                             <View>
                                 <Text style={styles.teamNamestyle}>{result.team.teamName}</Text>
                                 <Text style={styles.teamDatastyle}>matchesPlayed: {result.matchesPlayed} wins: {result.wins} losses: {result.pointInFavour}</Text>
