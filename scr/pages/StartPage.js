@@ -9,6 +9,7 @@ const StartPage = ({ navigation }) => {
             <ImageBackground source={require('../../assets/5c9f4573cab3b722695c5e570e2a8c90.jpeg')} style={styles.background}>
                 <Logo/>
                 <TouchableHighlight
+                    testID="searchButton"
                     style={styles.buttonContainer}
                     onPress={() => navigation.navigate('Search')}>
                     <View style={styles.button}>

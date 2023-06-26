@@ -19,7 +19,7 @@ const LeaguePage = ({route, navigation}) => {
 
     const loadLeague = () => {
         axios.get(
-            'http://localhost:8080/leagueTable/get', {
+            'http://172.21.224.1:8080/leagueTable/get', {
                 params: {
                     leagueId: route.params.id
                 }

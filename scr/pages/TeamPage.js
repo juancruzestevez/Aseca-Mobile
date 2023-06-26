@@ -25,7 +25,7 @@ const TeamPage = ({route}) => {
 
     const loadTeam = () => {
         axios.get(
-            'http://localhost:8080/team/get', {
+            'http://172.21.224.1:8080/team/get', {
                 params: {
                     id: route.params.id
                 }
@@ -40,7 +40,7 @@ const TeamPage = ({route}) => {
 
     const getPlayerData = (id) => {
         axios.get(
-            'http://localhost:8080/playerStat/getStat', {
+            'http://172.21.224.1:8080/playerStat/getStat', {
                 params: {
                     playerId: id
                 }
