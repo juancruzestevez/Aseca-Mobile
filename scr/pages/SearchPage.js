@@ -21,7 +21,7 @@ const SearchPage = ({navigation}) => {
 
     const loadLeagues = () => {
         axios.get(
-            'http://172.21.224.1:8080/league/all'
+            'http://172.30.176.1:8080/league/all'
         ).then(async (res) => {
             setLeagues(res.data)
             setResults(res.data)

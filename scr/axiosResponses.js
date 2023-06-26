@@ -3,7 +3,7 @@ import axios from "axios";
 const AxiosResponses = {
     allLeagues: (okCallback, errorCalllback) => {
         axios.get(
-            'http://172.21.224.1:8080/league/all'
+            'http://172.30.176.1:8080/league/all'
         ).then(async (res) => {
             if (res.status === 200){
                 const response = await res.data
